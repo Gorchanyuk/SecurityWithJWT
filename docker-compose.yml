@@ -1,7 +1,27 @@
 volumes:
   redis_data:
+  postgres-gorch:
 
 services:
+
+  jwt_security:
+    image: 'jwt_security:latest'
+    build:
+      context: .
+    container_name: gorchanyuk_jwt_security
+    working_dir: /usr/src/myapp
+    ports:
+      - "8090:8090"
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/t1_jwt
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_DATASOURCE_REDIS_HOST=redis
+      - SPRING_DATASOURCE_REDIS_PORT=6379
+      - SPRING_DATASOURCE_REDIS_PASSWORD=redis
 
   redis:
     image: redis:alpine
@@ -12,3 +32,19 @@ services:
       - redis_data:/data
     environment:
       - REDIS_PASSWORD=redis
+
+  database:
+    container_name: database
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: t1_jwt
+    volumes:
+      - postgres-gorch:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 20s
+      timeout: 10s
+      retries: 5
