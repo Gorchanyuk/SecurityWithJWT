@@ -1,6 +1,5 @@
 package ru.gorchanyuk.securitywithjwt.service.impl;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,7 +33,7 @@ public class AuthServiceImpl implements AuthService {
             log.info("Пользователь {} аутентифицирован", authRequest.getUsername());
             return AuthenticationResponse.builder()
                     .accessToken(accessTokenService.generateToken(user))
-                    .refreshToken(refreshTokenService.generateToken(user))
+                    .refreshToken(generateAndSaveNewToken(user))
                     .build();
         }
         throw new InvalidPasswordException();
@@ -60,7 +59,7 @@ public class AuthServiceImpl implements AuthService {
                 .build();
     }
 
-    private String generateAndSaveNewToken(@Valid User user) {
+    private String generateAndSaveNewToken(User user) {
         String refreshToken = refreshTokenService.generateToken(user);
         refreshTokenService.save(user.getUsername(), refreshToken);
         return refreshToken;

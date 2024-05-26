@@ -33,7 +33,7 @@ public class RefreshTokenRepository {
     public String getByUsername(String username) {
         String token = valueOps.get(username);
         if (!StringUtils.hasLength(token)) {
-            throw new RefreshTokenException("Токен обновления ользоваетеля: " + username + " не найден:");
+            throw new RefreshTokenException("Токен обновления пользоваетеля: " + username + " не найден:");
         }
         return token;
     }

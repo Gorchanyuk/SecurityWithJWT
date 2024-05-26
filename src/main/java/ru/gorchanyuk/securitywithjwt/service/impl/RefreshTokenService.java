@@ -17,9 +17,7 @@ public class RefreshTokenService extends TokenService {
 
     @Override
     public String generateToken(User user) {
-        String token = generateToken(user, properties);
-        save(user.getUsername(), token);
-        return token;
+        return generateToken(user, properties);
     }
 
     @Override

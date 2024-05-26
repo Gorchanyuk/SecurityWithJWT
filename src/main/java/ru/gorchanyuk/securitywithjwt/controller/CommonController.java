@@ -12,7 +12,5 @@ public class CommonController implements CommonControllerApi {
     public String common() {
         return "К этой странице доступ есть у пользователей с ролью не ниже 'USER'";
     }
-
-
 }
 
