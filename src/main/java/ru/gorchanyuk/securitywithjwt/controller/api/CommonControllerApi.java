@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
         description = "Контроллер к которому может получить доступ пользователь с ролью USER или ADMIN")
 public interface CommonControllerApi {
 
-    @Operation(summary = "Доступен для любого пользователя",
+    @Operation(summary = "Доступен для любого аутентифицированного пользователя",
             description = "Позволяет получить доступ пользователю с любой ролью",
             responses = {
                     @ApiResponse(responseCode = "200")

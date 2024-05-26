@@ -10,7 +10,7 @@ public class CommonController implements CommonControllerApi {
     @Override
     @PreAuthorize(value = "hasAnyAuthority('USER', 'ADMIN')")
     public String common() {
-        return "К этой странице доступ есть у пользователей с ролью не ниже 'USER'";
+        return "К этой странице доступ есть у пользователей с ролью 'USER' или 'ADMIN'";
     }
 }
 
