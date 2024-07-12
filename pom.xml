@@ -137,6 +137,48 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <argLine>
+                        --illegal-access=permit
+                    </argLine>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <forkCount>2</forkCount>
+                    <reuseForks>true</reuseForks>
+                    <argLine>${surefireArgLine}</argLine>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.12</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jcc-report</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+<!--                <configuration>-->
+<!--                    <excludes>-->
+<!--                        <exclude>ru.gorchanyuk.securitywithjwt.dto</exclude>-->
+<!--                        <exclude>ru.gorchanyuk.securitywithjwt.entity</exclude>-->
+<!--                    </excludes>-->
+<!--                </configuration>-->
+            </plugin>
         </plugins>
     </build>
 
