@@ -239,6 +239,8 @@
                 </executions>
                 <configuration>
                     <failOnError>false</failOnError>
+                    <effort>max</effort> <!-- Увеличение уровня детализации анализа -->
+                    <excludeFilterFile>src/main/resources/spotbugs-exclude.xml</excludeFilterFile>
                 </configuration>
                 <dependencies>
                     <dependency>
