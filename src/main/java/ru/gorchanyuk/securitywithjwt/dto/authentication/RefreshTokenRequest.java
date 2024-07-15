@@ -8,5 +8,5 @@ import lombok.Data;
 public class RefreshTokenRequest {
 
     @Schema(description = "Токен обновления")
-    public String refreshToken;
+    private String refreshToken;
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import ru.gorchanyuk.securitywithjwt.util.RoleUser;
 
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
@@ -13,7 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
