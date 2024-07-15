@@ -199,20 +199,21 @@
                 <version>1.16.1</version>
                 <executions>
                     <execution>
-                        <phase>package</phase>
+                        <phase>test</phase>
                         <goals>
                             <goal>mutationCoverage</goal>
                         </goals>
-                        <configuration>
-                            <targetClasses>
-                                <pattern>ru.gorchanyuk.securitywithjwt.service.impl.*</pattern>
-                            </targetClasses>
-                            <targetTests>
-                                <pattern>ru.gorchanyuk.securitywithjwt.service.impl.*</pattern>
-                            </targetTests>
-                        </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <targetClasses>
+                        <pattern>ru.gorchanyuk.securitywithjwt.service.impl.*</pattern>
+                    </targetClasses>
+                    <targetTests>
+                        <pattern>ru.gorchanyuk.securitywithjwt.service.impl.*</pattern>
+                    </targetTests>
+                    <mutators>ALL</mutators>
+                </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>org.pitest</groupId>
