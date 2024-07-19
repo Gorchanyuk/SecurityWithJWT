@@ -18,6 +18,12 @@
         <springdoc-openapi.version>2.5.0</springdoc-openapi.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <jjwt.version>0.12.5</jjwt.version>
+        <jacoco.version>0.8.12</jacoco.version>
+        <pitest.plugin.version>1.16.1</pitest.plugin.version>
+        <pitest.dependency.version>1.2.1</pitest.dependency.version>
+        <spotbugs.plagin.version>4.8.6.2</spotbugs.plagin.version>
+        <spotbugs.dependency.version>4.8.6</spotbugs.dependency.version>
+        <pmd.version>3.24.0</pmd.version>
     </properties>
     <dependencies>
         <dependency>
@@ -142,7 +148,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.12</version>
+                <version>${jacoco.version}</version>
                 <executions>
                     <execution>
                         <id>jacoco-initialize</id>
@@ -198,7 +204,7 @@
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
-                <version>1.16.1</version>
+                <version>${pitest.plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>test</phase>
@@ -220,7 +226,7 @@
                     <dependency>
                         <groupId>org.pitest</groupId>
                         <artifactId>pitest-junit5-plugin</artifactId>
-                        <version>1.2.1</version>
+                        <version>${pitest.dependency.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -228,7 +234,7 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.8.6.2</version>
+                <version>${spotbugs.plagin.version}</version>
                 <executions>
                     <execution>
                         <phase>compile</phase>
@@ -246,7 +252,7 @@
                     <dependency>
                         <groupId>com.github.spotbugs</groupId>
                         <artifactId>spotbugs</artifactId>
-                        <version>4.8.6</version>
+                        <version>${spotbugs.dependency.version}</version>
                         <type>pom</type>
                     </dependency>
                 </dependencies>
@@ -255,7 +261,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.24.0</version>
+                <version>${pmd.version}</version>
                 <configuration>
 
                     <rulesets>
